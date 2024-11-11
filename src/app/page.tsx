@@ -75,12 +75,13 @@ interface WeatherData {
 export default function Home() {
   const [place, setPlace] = useAtom(placeAtom)
   const [loadingCity] = useAtom(loadingCityAtom)
+  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY
 
   const { isLoading, error, data, refetch } = useQuery<WeatherData>(
     "repoData",
     async () => {
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&cnt=56`
+        `https://api.openweathermap.org/data/2.5/forecast?q=Melbourne&appid=de0a7ae59e461adc8716faa648c48198`
       )
       return data
     }
@@ -97,8 +98,8 @@ export default function Home() {
       data?.list.map(
         (entry) => new Date(entry.dt * 1000).toISOString().split("T")[0]
       )
-    )
-  ];
+    ),
+  ]
 
   // Filtering data to get the first entry after 6 AM for each unique date
   const firstDataForEachDate = uniqueDates.map((date) => {
