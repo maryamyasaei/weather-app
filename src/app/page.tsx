@@ -73,7 +73,7 @@ interface WeatherData {
 }
 
 export default function Home() {
-  const [place] = useAtom(placeAtom)
+  const [place, setPlace] = useAtom(placeAtom)
   const [loadingCity] = useAtom(loadingCityAtom)
 
   const { isLoading, error, data, refetch } = useQuery<WeatherData>(
@@ -118,7 +118,7 @@ export default function Home() {
   if (error)
     return (
       <div className="flex items-center min-h-screen justify-center">
-        {/* @ts-expect-error"*/}
+        {/* @ts-ignore */}
         <p className="text-red-400">{error.message}</p>
       </div>
     )
