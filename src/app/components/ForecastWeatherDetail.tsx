@@ -12,8 +12,6 @@ export interface ForecastWeatherDetailProps extends WeatherDetailProps {
   day: string
   temp: number
   feels_like: number
-  temp_min: number
-  temp_max: number
   description: string
 }
 
@@ -26,8 +24,6 @@ export default function ForecastWeatherDetail(
     day = "Tuesday",
     temp,
     feels_like,
-    temp_min,
-    temp_max,
     description,
   } = props
   return (

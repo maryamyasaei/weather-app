@@ -73,9 +73,8 @@ interface WeatherData {
 }
 
 export default function Home() {
-  const [place, setPlace] = useAtom(placeAtom)
+  const [place] = useAtom(placeAtom)
   const [loadingCity] = useAtom(loadingCityAtom)
-  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY
 
   const { isLoading, error, data, refetch } = useQuery<WeatherData>(
     "repoData",
@@ -119,7 +118,7 @@ export default function Home() {
   if (error)
     return (
       <div className="flex items-center min-h-screen justify-center">
-        {/* @ts-ignore */}
+        {/* @ts-expect-error"*/}
         <p className="text-red-400">{error.message}</p>
       </div>
     )
