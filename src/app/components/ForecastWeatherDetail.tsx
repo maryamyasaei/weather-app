@@ -13,6 +13,8 @@ export interface ForecastWeatherDetailProps extends WeatherDetailProps {
   temp: number
   feels_like: number
   description: string
+  temp_max: number
+  temp_min: number
 }
 
 export default function ForecastWeatherDetail(
